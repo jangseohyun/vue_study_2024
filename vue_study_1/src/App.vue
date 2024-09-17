@@ -16,12 +16,10 @@
     <!--<a v-for="(menuNm,i) in menuNmArr" :key="i">{{menuNm}}</a>-->
   </div>
 
-  <div v-for="(products,i) in productsArr" :key="i">
-      <img :src="require(`@/assets/room${i}.jpg`)" class="room-img">
-      <h4 @click="modalOpen==false ? modalOpen=true : modalOpen=false">{{productsArr[i]}}</h4>
-      <p>{{priceArr[i]}}만 원</p>
-      <button @click="reportNumArr[i]++" @mouseover="logTest">허위매물신고</button> <!-- v-on: → @ -->
-      <span>신고수: {{reportNumArr[i]}}</span>
+  <div v-for="(oneroom,i) in onerooms" :key="i">
+      <img :src="onerooms[i].image" class="room-img">
+      <h4 @click="modalOpen==false?modalOpen=true:modalOpen=false">{{onerooms[i].title}}</h4>
+      <p>{{onerooms[i].price}}만 원</p>
   </div>
   
 </template>
@@ -37,7 +35,8 @@ export default {
       productsArr: ['역삼동원룸','천호동원룸','마포구원룸'],
       colorRed: 'color:red',
       menuNmArr: ['Home','Products','About'],
-      modalOpen: false
+      modalOpen: false,
+      onerooms: data
     }
   },
   methods: {
@@ -48,6 +47,9 @@ export default {
   components: {
   },
 };
+
+import data from './assets/data.js';
+
 </script>
 
 <style>
